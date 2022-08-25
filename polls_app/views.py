@@ -17,8 +17,7 @@ def getPollByLGA(request, id):
     lga_polls = PollingUnit.objects.filter(lga_id=id)
     return render(request, 'lga_polls.html', {'polls': lga_polls})
 
-def get_all_party_results(request):
-    parties = Party.objects.all()
+def get_sum_of_polling_units(request):
     polls = PollingUnit.objects.filter(polling_unit_id__gt=0).filter(lga_id=22)
     context = {}
     total = 0
@@ -30,7 +29,7 @@ def get_all_party_results(request):
                 continue
             else:
                 total += y 
-    return render(request, 'all_party_results.html', {'context': context, 'total':total})
+    return render(request, 'sum_polling_units.html', {'context': context, 'total':total})
 
 
 
