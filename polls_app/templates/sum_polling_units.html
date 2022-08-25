@@ -7,7 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Total Sum of Polling Units under LGA 22</h1>
+    <h1>Total Sum of Polling Units under an LGA</h1>
+
+    <h4>Select LGA</h4>
+
+        {% for poll in polls %}
+            <button><a href="{% url 'sum_polling_units' poll.lga_id%}">{{poll.lga_id}}</a></button>
+        {% endfor %}
+        <br>
+        <br>
 
     {% for k, v in context.items %}
         {% for x, y in v.items %}
