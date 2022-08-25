@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polls by LGA</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Polling Unit Name</th>
+                <th>Polling Unit No</th>
+                <th>LGA ID</th>
+            </tr>
+        </thead>
+    {% for poll in polls %}
+        <tbody>
+            <tr>
+                <td>{{poll.polling_unit_name}}</td>
+                <td>{{poll.polling_unit_number}}</td>
+                <td>{{poll.lga_id}}</td>
+            </tr>
+        </tbody>
+    {% endfor %}
+</table>
+<br>
+<button><a href="{% url 'polls' %}">Back to index page</a></button>
+
+</body>
+</html>

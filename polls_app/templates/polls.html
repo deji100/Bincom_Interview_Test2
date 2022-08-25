@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polls</title>
+</head>
+<body>
+    <button><a href="{% url 'pu_result' %}">Back to Poll Unit Result 13</a></button>
+    <h1>Polls</h1>
+    <table>
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Polling Unit Number</td>
+                </tr>
+            </thead>
+        {% for poll in polls %}
+            <tbody>
+                <tr>
+                    <td>{{poll.uniqueid}}</td>
+                    <td>{{poll.polling_unit_number}}</td>
+                    <td><a href="{% url 'poll_lga' poll.lga_id %}">Get polls by their lga</a></td>
+                </tr>
+            </tbody>
+        {% endfor %}
+    </table>
+</body>
+</html>
