@@ -149,7 +149,8 @@ class PollingUnit(models.Model):
     date_entered = models.DateField(blank=True, null=True)
     user_ip_address = models.CharField(max_length=50, blank=True, null=True)
 
-
+    def __str__(self) -> str:
+        return str(self.polling_unit_id)
     class Meta:
         managed = False
         db_table = 'polling_unit'

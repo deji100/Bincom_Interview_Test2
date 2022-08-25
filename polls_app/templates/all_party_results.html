@@ -7,13 +7,16 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Party Results for all Polling Unit</h1>
+    <h1>Total Sum of Polling Units under LGA 22</h1>
 
     {% for k, v in context.items %}
         {% for x, y in v.items %}
-            <div>{{k}} : {{y}}</div>
+            <div>Polling Unit {{k}} : {{y}}</div>
         {% endfor %}
     {% endfor %}
+    <br>
+    <br>
+    Total Sum of Polling Units under LGA 22: {{total}}
     <br>
     <br>
     <button><a href="{% url 'polls' %}">Check polls</a></button>

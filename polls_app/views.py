@@ -19,10 +19,18 @@ def getPollByLGA(request, id):
 
 def get_all_party_results(request):
     parties = Party.objects.all()
+    polls = PollingUnit.objects.filter(polling_unit_id__gt=0).filter(lga_id=22)
     context = {}
-    for party in parties:
-        context[party] = AnnouncedPuResults.objects.filter(party_abbreviation=party).aggregate(Sum('party_score'))
-    return render(request, 'all_party_results.html', {'context': context})
+    total = 0
+    for poll in polls:
+        context[poll] = AnnouncedPuResults.objects.filter(polling_unit_uniqueid=poll).aggregate(Sum('party_score'))
+    for k, v in context.items():
+        for x, y in v.items():
+            if y == None:
+                continue
+            else:
+                total += y 
+    return render(request, 'all_party_results.html', {'context': context, 'total':total})
 
 
 
